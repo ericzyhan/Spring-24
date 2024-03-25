@@ -1,96 +1,135 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.10.23)  13 FEB 2024 21:44
-entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**"C:/Users/erich/Documents/BU/Spring 24/CC 202/First Paper/main.tex"
-(C:/Users/erich/Documents/BU/Spring 24/CC 202/First Paper/main.tex
-LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-10-10>
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+This is LuaHBTeX, Version 1.17.0 (MiKTeX 23.10.12) (format=lualatex 2023.12.5)  25 MAR 2024 12:23
+ restricted system commands enabled.
+**"C:/Users/avalon/Documents/GitHub/Spring-24/CC 202/First Paper/main.tex"
+("C:/Users/avalon/Documents/GitHub/Spring-24/CC 202/First Paper/main.tex"
+LaTeX2e <2023-11-01>
+L3 programming layer <2023-11-09>
+Lua module: luaotfload 2023-08-31 3.26 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 2.76 ConTeXt Lua libraries -- extended c
+ollection.
+luaotfload | conf : Root cache directory is "C:/Users/avalon/AppData/Local/MiKTe
+X/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-08-19.lua" from kpse-res
+olved path "C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/
+fontloader-2023-08-19.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.133
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "C:/Users/avalon/AppData/Local/MiKTe
+X/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'. (C:/Users/avalon/AppDat
+a/Local/Programs/MiKTeX/tex/latex/base/article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/base/size12.clo
 File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
-)
-\c@part=\count185
-\c@section=\count186
-\c@subsection=\count187
-\c@subsubsection=\count188
-\c@paragraph=\count189
-\c@subparagraph=\count190
-\c@figure=\count191
-\c@table=\count192
+luaotfload | db : Font names database loaded from C:/Users/avalon/AppData/Local/
+MiKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz)
+\c@part=\count184
+\c@section=\count185
+\c@subsection=\count186
+\c@subsubsection=\count187
+\c@paragraph=\count188
+\c@subparagraph=\count189
+\c@figure=\count190
+\c@table=\count191
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
-\bibindent=\dimen140
+\bibindent=\dimen139
 )
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count193
-\Gm@cntv=\count194
-\c@Gm@tempcnt=\count195
-\Gm@bindingoffset=\dimen141
-\Gm@wd@mp=\dimen142
-\Gm@odd@mp=\dimen143
-\Gm@even@mp=\dimen144
-\Gm@layoutwidth=\dimen145
-\Gm@layoutheight=\dimen146
-\Gm@layouthoffset=\dimen147
-\Gm@layoutvoffset=\dimen148
+\Gm@cnth=\count192
+\Gm@cntv=\count193
+\c@Gm@tempcnt=\count194
+\Gm@bindingoffset=\dimen140
+\Gm@wd@mp=\dimen141
+\Gm@odd@mp=\dimen142
+\Gm@even@mp=\dimen143
+\Gm@layoutwidth=\dimen144
+\Gm@layoutheight=\dimen145
+\Gm@layouthoffset=\dimen146
+\Gm@layoutvoffset=\dimen147
 \Gm@dimlist=\toks18
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
-Package: setspace 2022/12/04 v6.7b set line spacing
-)
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/graphics\rotating.sty
-Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg))
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+) (C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/graphics/rotating.st
+y
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
-fg
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/graphics.
+cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: luatex.def on input line 107.
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/graphics-def/luatex.de
+f
+File: luatex.def 2022/09/22 v1.2d Graphics/color driver for luatex
 ))
-\Gin@req@height=\dimen149
-\Gin@req@width=\dimen150
-) (C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+\Gin@req@height=\dimen148
+\Gin@req@width=\dimen149
+) (C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count196
+\c@r@tfl@t=\count195
 \rotFPtop=\skip50
 \rotFPbot=\skip51
 \rot@float@box=\box51
 \rot@mess@toks=\toks19
-)
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+) (C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks20
 \inpenc@posthook=\toks21
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
 )
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 
 \f@nch@headwidth=\skip52
@@ -103,13 +142,14 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@olf=\skip59
 \f@nch@O@orf=\skip60
 )
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
-File: l3backend-pdftex.def 2023-10-10 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count197
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-lu
+atex.def
+File: l3backend-luatex.def 2023-11-09 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count196
+Inserting `l3color' in `luaotfload.parse_color'.
 \l__pdf_internal_box=\box52
-) (main.aux)
-\openout1 = `main.aux'.
+) (./main.aux)
+\openout1 = main.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
@@ -120,6 +160,14 @@ LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 5
+2.
+
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
@@ -127,9 +175,9 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
 LaTeX Font Info:    ... okay on input line 52.
 
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: luatex
 * paper: letterpaper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -161,29 +209,29 @@ LaTeX Font Info:    ... okay on input line 52.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
-ii
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.m
+kii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count198
-\scratchdimen=\dimen151
+\scratchcounter=\count197
+\scratchdimen=\dimen150
 \scratchbox=\box53
-\nofMPsegments=\count199
-\nofMParguments=\count266
+\nofMPsegments=\count198
+\nofMParguments=\count199
 \everyMPshowfont=\toks22
-\MPscratchCnt=\count267
-\MPscratchDim=\dimen152
-\MPnumerator=\count268
-\makeMPintoPDFobject=\count269
+\MPscratchCnt=\count266
+\MPscratchDim=\dimen151
+\MPnumerator=\count267
+\makeMPintoPDFobject=\count268
 \everyMPtoPDFconversion=\toks23
 )
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
-ase.sty
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-
+base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
+(C:/Users/avalon/AppData/Local/Programs/MiKTeX/tex/latex/00miktex/epstopdf-sys.
+cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 
@@ -194,7 +242,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[1{C:/Users/erich/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+[1{C:/Users/avalon/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
 ]
 
@@ -223,26 +271,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4] (main.aux)
+[4] (./main.aux)
  ***********
-LaTeX2e <2023-06-01> patch level 1
-L3 programming layer <2023-10-10>
+LaTeX2e <2023-11-01>
+L3 programming layer <2023-11-09>
  ***********
- ) 
-Here is how much of TeX's memory you used:
- 2233 strings out of 474824
- 36814 string characters out of 5750976
- 1928043 words of memory out of 5000000
- 24196 multiletter control sequences out of 15000+600000
- 558714 words of font info for 38 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 72i,11n,79p,1851b,276s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr12.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmti12.pfb>
-Output written on main.pdf (4 pages, 43500 bytes).
-PDF statistics:
- 25 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+)
+
+Here is how much of LuaTeX's memory you used:
+ 2303 strings out of 476598
+ 100000,1977958 words of node,token memory allocated
+ 421 words of node memory still in use:
+   3 hlist, 1 vlist, 1 rule, 2 glue, 3 kern, 1 glyph, 4 attribute, 51 glue_spec,
+ 4 attribute_list, 1 write nodes
+   avail lists: 2:164,3:41,4:32,5:356,6:26,7:6329,9:160,10:21,11:477
+ 24241 multiletter control sequences out of 65536+600000
+ 16 fonts using 855119 bytes
+ 72i,11n,75p,1841b,313s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<//?/c:/users/avalon/appdata/local/programs/miktex/fonts/opentype/public/lm/lmro
+man12-italic.otf><//?/c:/users/avalon/appdata/local/programs/miktex/fonts/openty
+pe/public/lm/lmroman12-regular.otf>
+Output written on main.pdf (4 pages, 24190 bytes).
+
+PDF statistics: 29 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
