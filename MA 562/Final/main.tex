@@ -1,15 +1,18 @@
-\documentclass[10pt, psamsfonts]{amsart}
+\documentclass[10.5pt, psamsfonts]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
-\usepackage{hyperref}
+% \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{xcolor}
-\usepackage{amsthm}
+% \usepackage{amsthm}
 \usepackage{pdflscape}
 \usepackage{pgfplots}
 \usepackage{mathrsfs}
 \usepackage{setspace}
 \usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{cleveref}
 % \usepackage[fontsize=11pt]{scrextend}
 
 \setstretch{1.0}
@@ -228,8 +231,9 @@ Through this, we have proved the following three statements equivalent for mecha
 \end{enumerate}
 The second statement is of particular use to us, as we may now transition from the Cartesian coordinates of Newtonian Mechanics to the generalized coordinate space of Lagrangian mechanics.
 
-\subsection{Generalized Coordinates, and Lagrange's Equations}
+\subsection{Generalized Coordinates and Invariance}
 In a characteristic move for physicists and mathematicians, we attempt to generalize mechanics in Cartesian space (which utilizes vectors) to a generalized coordinate space where we may use scalar representations of motion, such as kinetic and potential energy. 
+There will be an attempt to derive everything through the techniques of the calculus of variations, rather than proofs by trust in god as physicists normally do.
 
 The Lagrangian formulation of classical mechanics has two central advantages over the Newtonian formulation. First, Lagrange's equations take the same form in any coordinate system, as coordinate transforms are as easy as defining a function that transforms each coordinate in your system. Second, the Lagrangian approach eliminates forces of constraints, such as a particle forced to move on a curved surface. We will be exploiting the first of these two properties in this section.
 
@@ -257,10 +261,14 @@ Let $\mathfrak{L}[x, \dot{x}, t]$ be a Lagrangian in a Cartesian space. Then,
   % \label{eq:}
   \tilde{\mathfrak{L}}[q, \dot{q}, t] = \mathfrak{L}[x(q,t), \dot{x}(q, \dot{q}, t)] 
 \end{align*}
-is the Lagrangian in a generalized coordinate space. These two functions agree at corresponding physical points in space.
+is the Lagrangian in a generalized coordinate space. 
 \end{defn}
 
-Before continuing any further, it's important to understand our final goal for generalizing Newtonian mechanics into the Lagrangian framework. The generalized coordinate space of Lagrangian mechanics will allow us to exploit the invariance of the Lagrangian under coordinate transformation in space. This is an important application of Noether's theorem that will allow us to solve the Two-Body Problem. In order to provide a generalized version of Noether's theorem, we require the following definition of invariance:
+Before continuing any further, it's important to understand our final goal for generalizing Newtonian mechanics into the Lagrangian framework. 
+\begin{claim}
+  The Lagrangian in Cartesian space and the Lagrangian in generalized coordinate space agree at corresponding physical points in space.
+\end{claim}
+We would like to show that the Lagrangian remains the "same" under coordinate transformation so that we may move into the generalized coordinate space of Lagrangian mechanics. This is an important application of Noether's theorem that will allow us to solve the Two-Body Problem. In order to provide a generalized version of Noether's theorem, we require the following definition of invariance:
 
 \begin{defn}
 Consider a family of transformations of $\mathbb{R}^d$, $h_s(q):\mathbb{R}^d \to \mathbb{R}^d $, where $s \in \mathbb{R}$ and $h_s(q)$ in both $q$ and $s$, and $h_0(q) = q$. A Lagrangian $\mathfrak{L}[q, \dot{q}, t]$ is invariant under the action of the family of transformations of $\mathbb{R}^d$, $h_s(q): \mathbb{R}^n \to \mathbb{R}^d$, if $\mathfrak{L}$ does not change when $q(t)$ is replaced by the transform $h_s(q(t))$. That is, for any function $q(t)$,
@@ -278,26 +286,107 @@ If the Lagrangian $\mathfrak{L}$ is invariant under the action of a one-paramete
 \end{align*}
 is constant along any solution of the Euler-Lagrange equation. This quantity is called the integral of motion.
 \end{thm}
-\noindent The proof of this theorem is left to Chertkov and Clark.
+\noindent The details of the proof for this theorem are left to Chertkov and Clark.\\
 
-Invariance under coordinate transformation, then, lets us choose a coordinate system that is convenient for us, as the integral of motion of the Lagrangian is preserved across any coordinate system we might choose to use.
+Invariance under coordinate transformation lets us choose a coordinate system that is convenient for us, as the integral of motion of the Lagrangian is preserved across any coordinate system we might choose to use. Our aim, then, is to prove that the Lagrangian is invariant under coordinate transformations.
 
-To prove that the Lagrangian is invariant under coordinate transformations, we must make use of a proposition formally defining velocity in generalized coordinates.
-\begin{prop}
-If the system is allowed to vary, the change in Cartesian coordinates can also be expressed in terms of generalized coordinates. That is,
-\begin{gather*}
-  % \label{eq:}
-  \Delta x_i = \frac{\partial x_i}{\partial q_1}\Delta q_1 + \frac{\partial x_i}{\partial q_2}\Delta q_2 + ... + \frac{\partial x_i}{\partial q_n}\Delta q_n =  \sum_j \frac{\partial x_i}{\partial q_j} \Delta q_j \\
-  \Delta q_j = \frac{\partial q_j}{\partial x_1} \Delta x_1 + \frac{\partial q_j}{\partial x_2} \Delta x_2 + ... + \frac{\partial q_j}{\partial x_n} \Delta x_n = \sum_i \frac{\partial q_j}{\partial x_i} \Delta x_i
-\end{gather*}
-We can extend this notion to the time derivative to express velocity in the same way.
+\begin{defn}
+Let $q_j$ denote position in generalized coordinates. Then velocity is defined as
+\begin{align}
+  \label{eq:Formal Velocity}
+  \dot{q}_j = \sum_i \frac{\partial q_j}{\partial x_i} \dot{x}_i + \frac{\partial q_j}{\partial t}. 
+\end{align}
+\end{defn}
+\noindent It follows that
+\begin{align}
+  \label{eq:Proportionality}
+  \frac{\partial \dot{q}_j}{\partial \dot{x}_i} = \frac{\partial q_j}{\partial x_i}.
+\end{align}
+That is, observing the movement of particles in a system, the change in position over time across different coordinate spaces is proportional to their changes in position.
+
+\begin{thm}
+  The Lagrangian is invariant to coordinate transformations. In generalized coordinate space, it produces an Euler-Lagrange equation of the form
+  \begin{align*}
+    % \label{eq:}
+    \frac{d}{dt} \bigg( \frac{\partial L}{\partial \dot{q}_j}  \bigg) - \frac{\partial L }{\partial q_j} = 0.
+  \end{align*}
+\end{thm}
+
+\begin{proof}
+The chain rule tells us that
+\begin{align}
+  \label{eq:Chain Rule Lagrangian xdot} 
+  % \setcounter{equation}{19}
+  \frac{\partial L}{\partial \dot{x}_j}  = \sum_k \frac{\partial L}{\partial q_k} \frac{\partial q_k}{\partial \dot{x}_j} + \frac{\partial L}{\partial \dot{q}_k} \frac{\partial \dot{q}_k}{\partial \dot{x}_j}.
+\end{align}
+The first term disappears because $q_k$ is dependent on position and time $x_k$ and $t$, but not on velocity $\dot{x}_k$. From (\ref{eq:Proportionality}), we may rewrite (\ref{eq:Chain Rule Lagrangian xdot}) as
 \begin{align*}
   % \label{eq:}
-  \dot{x}_i &= \sum_j \frac{\partial x_i}{\partial q_j} \dot{q}_j\\
-  \dot{q}_j &= \sum_i \frac{\partial q_j}{\partial x_i} \dot{x}_i.
+  \frac{\partial L}{\partial \dot{x}_i} = \sum_j \frac{\partial L}{\partial q} 
 \end{align*}
-\end{prop}
+The Euler-Lagrange equation demands that we take the time derivative of this function. We don't want a partial derivative, which holds the point in configuration space fixed, but rather the \textit{total} time derivative, which is the derivative along the path that the system takes as it moves through configuration spaces.
 
+\begin{defn}
+For any function $f(x,t)$ in a configuration space, the total time derivative is
+\begin{align*}
+  % \label{eq:}
+  \frac{df}{dt} = \sum_j \frac{\partial f}{\partial x_j} \dot{x}_j + \frac{\partial f}{\partial t}. 
+\end{align*}
+\end{defn}
+((Appendix reference here))\\
+\noindent So, the time derivative of $\partial L/\partial \dot{x}_i$ is
+\begin{align}
+  \label{eq:Time Derivative Lagrangian}
+  \sum_j \bigg(\frac{d}{dt} \frac{\partial L}{\partial \dot{x}_j}  \bigg) \frac{\partial q_j}{\partial x_i} + \sum_j \frac{\partial L}{\partial \dot{q}_j} \bigg(\frac{\partial^2 q_j}{\partial x_i \partial x_k} \dot{x}_k + \frac{\partial^2 q_j}{\partial x_i \partial t}  \bigg).
+\end{align}
 
+Also, by the chain rule, 
+\begin{align*}
+  % \label{eq:}
+  \frac{\partial L}{\partial x_i}  = \sum_j \frac{\partial L}{\partial q_j} \frac{\partial q_j}{\partial x_i} + \sum_j \frac{\partial L}{\partial \dot{q}_j} \frac{\partial \dot{q}_j}{\partial x_i}.
+\end{align*}
+The last term no longer vanishes, as $\dot{q}_j$ generally depends on both position and velocity. From (\ref{eq:Formal Velocity}), 
+\begin{gather*}
+  \frac{\partial \dot{q}_j}{\partial x_i} = \sum_k \frac{\partial^2 q_j}{\partial x_i \partial x_k} \dot{x}_k + \frac{\partial^2 q_j}{\partial x_i \partial t},
+\end{gather*}
+so
+\begin{gather}
+\label{eq:Spatial Lagrangian}
+  \frac{\partial L}{\partial x_i} = \sum_j \frac{\partial L}{\partial q_j} \frac{\partial q_j}{\partial x_i} + \sum_j \frac{\partial L}{\partial \dot{q}_j}\bigg(\sum_k \frac{\partial^2 q_j}{\partial x_i \partial x_k} \dot{x}_k + \frac{\partial^2 q_j}{\partial x_i \partial t}  \bigg).
+\end{gather}
+The Euler-Lagrange equation says that \ref{eq:Time Derivative Lagrangian} and \ref{eq:Spatial Lagrangian} are equal, and in subtracting them, the second terms cancel. We are left with
+\begin{align*}
+  % \label{eq:}
+  0 = \sum_j \bigg(\frac{d}{dt} \frac{\partial L}{\partial \dot{q}_j} - \frac{\partial L}{\partial q_j} \bigg) \frac{\partial q_j}{\partial x_i} .
+\end{align*}
 
+The matrix operator provided by $\partial q_j/\partial x_i $ is nonsingular, and thus has a trivial nullspace. Therefore, the only way for this quantity to be 0 is for
+\begin{align*}
+  % \label{eq:}
+  \frac{d}{dt} \frac{\partial L}{\partial \dot{q}_j} - \frac{\partial L}{\partial q_j} = 0
+\end{align*}
+
+We have thus derived the Euler-Lagrange equations in generalized coordinates, and proved that they are invariant to coordinate transformation.
+\end{proof}
+
+This is the central result that we have been aiming for. We began by attempting to discern the most efficient path for a system with constraints which we modeled as an optimization problem in a Banach space. We arrived at the Euler-Lagrange equations for an arbitrary functional, which gave us the extrema of the functional. We then extended this notion to the realm of classical mechanics by introducing Hamilton's Principle of Least Action and proving it equivalent to both Newton's Second Law of Motion and the Euler-Lagrange equations, showing that the most optimized paths of motion for mechanical systems were those which satisfied the Euler-Lagrange equations. Finally, we showed that the Euler-Lagrange equations are invariant under coordinate transformations, allowing us to adopt a more abstract formulization of mechanics in Langrangian mechanics. Now, we may approach the Two-Body Problem with these tools in hand.
+
+\section{The Two-Body Problem}
+The Two-Body Problem is one of the most fundamental problems in the field of classical mechanics. It was first tackled by Newton in his \textit{Principia} using geometric arguments and his Universal Law of Gravitation. Broadly, the problem deals with an isolated system of two bodies. We assume that the only forces in the system are those of the two bodies acting upon one another. There are several examples of this problem that naturally arise in our universe: the moon and the earth, a planet and its star, or a binary system of two stars. Realistically, we cannot exclude even the "small" perturbative forces that these systems experience, but the reduction of the problem will still provide a good first approximation of such systems.
+
+\subsection{Applying the Euler-Lagrange Equations}
+Consider two bodies in space with masses $m_1, m_2$ at positions $r_1, r_2$ in space. The size of the bodies is irrelevant in that they are separated so greatly in magnitude that irrespective of their actual size, they may be represented by point masses in space. The only forces present in the system are $F_{12} $ and $F_{21}$. We assume these are conservative forces and can thus be regarded as gradients of the potential, $\mathcal{U}(r_1, r_2)$
+
+\newpage
+\section*{Appendix}
+\appendix
+\begin{defns}
+  Consider a system of point masses. 
+  \begin{enumerate}
+    \item Specifying the position of all the constituent particles of a system specifies the \textbf{configuration} of the system.
+    \item The set of all configurations that can be assumed is called the \textbf{configuration space} of the system.
+    \item The \textbf{dimension} of the configuration space is the smallest number of parameters needed to completely specify a configuration.
+    \item The dimension of the configuration space is called the number of \textbf{degrees of freedom} that a system has.
+  \end{enumerate}
+\end{defns}
 \end{document}
