@@ -1,0 +1,232 @@
+\documentclass[psamsfonts]{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{pdflscape}
+\usepackage{pgfplots}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+
+\setstretch{1.0}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ppty}[thm]{Property}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{limit}[thm]{Limitation}
+
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+
+
+\makeatletter
+\let\c@equation\c@thm
+\makeatother
+\numberwithin{equation}{section}
+
+\bibliographystyle{plain}
+
+%--------Meta Data: Fill in your info------
+\title{On Lagrangian Mechanics and the Three-Body Problem}
+
+\author{Eric Han}
+
+\begin{document}
+
+\begin{abstract}
+Lagrangian mechanics have long played an integral role in classical mechanics. In particular, the principles of Lagrangian mechanics have found great usage in the Two-Body Problem, allowing mathematicians and physicists to derive explicit analytic solutions to the problem for any combination of initial conditions. The Three-Body Problem follows as a natural progression of the Two-Body Problem, but is to this day unsolvable explicitly. This paper attempts to develop a natural, mathematically rigorous understanding of the link between Lagrangian mechanics and the Two-Body Problem, as well as touch upon the difficulties in applying it to the Three-Body Problem.
+\\\\
+% \noindent \textbf{Keywords.} Derivative, Differential calculus, Differentiation, Taylor's theorem, Taylor's formula, Taylor's series, Taylor's polynomial, Power function, Binomial theorem, Smooth function, Newton's interpolation formula, Finite difference, Q-derivative, Jackson derivative, Q-calculus, Quantum calculus, Q-difference, Quantum algebra\\\\
+\noindent MA 562, Methods of Applied Math 2 \\
+\noindent Professor Gabriel Ocker \\
+\noindent Final Project\\
+\noindent \textbf{Email:} ehan08@bu.edu\\
+\noindent \textbf{Date:} April 26, 2024
+\end{abstract}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section*{On Classical Mechanics}
+For as long as humanity has existed, the study of the physical motion of projectile bodies has been of great interest. The beginnings of orbital mechanics rose with Tycho Brahe and Johann Kepler, who laid the groundwork for the study of celestial mechanics roughly 50 years before Newton's formalization of the field in his \textit{Principia}. During the plague of 1665, Newton was able to lay the groundwork for Newtonian mechanics through his laws of motion.
+
+The study of classical mechanics can be divided into 3 central formulations:
+\begin{itemize}
+  \item[] \textbf{Newtonian Mechanics}, which is based on vectors in Cartesian space.
+  \item[] \textbf{Lagrangian Mechanics}, which operates in a generalized coordinate space.
+  \item[] \textbf{Hamiltonian Mechanics}, which operates in a phase space.
+\end{itemize}
+While we will only briefly touch on Hamiltonian mechanics, it is important for us the understand the distinction between Newtonian and Lagrangian mechanics. The first part of this paper will motivate the development of Lagrangian mechanics and tackle the derivation of the Euler-Lagrange equations and prove its equivalency to Newton's Second Law. Classical mechanics initially relied on Newtonian mechanics, but the development of the more abstract, powerful formulation of Lagrangian mechanics allow us to exploit transformational invariances and symmetries in a generalized coordinate system that are difficult to see in a standard Cartesian system using vectors.
+
+The next part of the paper will introduce the formal statement of the Two-Body Problem and showcase the application of Lagrangian mechanics that allow us to almost magically reduce a 12-dimensional problem into a 1-dimensional problem, thereby allowing us to produce an explicit, solvable equation for the Two-Body Problem. We conclude with a brief section on the difficulty of the Three-Body Problem and its current unsolvability.
+
+\section{Lagrangian Mechanics}
+Lagrangian mechanics is predicated, ironically, on \textit{Hamilton's} Principle of Least Action. That is, the path that a mechanical system takes is one where the path minimizes some quantity, the action, which is dependent on the body's energy as it moves. Intuitively, this means that there is some optimized motion that nature obeys, whether observing a ball's trajectory through the air or the movement of planets around one another. Remarkably, this optimal path is a fundmental result of the calculus of variations rather than a result derived from any particular physical observations.
+
+\subsection{The Euler-Lagrange Equations}
+The Euler-Lagrange equations are the beginnings of an effort to mathematically define optimized paths between an initial and terminal point in a system with constraints. Intuitively, one can view this as an optimization problem of a functional in a function space. We'll first introduce all of the definitions necessary for us to complete such an optimization problem.
+\begin{defn}
+  Let $X$ a Banach space. A curve in $X$ is a continuous map $\gamma : [t_0, t_1] \to X$. A functional $\mathcal{F}$ is a mapping from the space of curves $\Gamma$ in $X$ to the reals. That is, $\mathcal{F}:\Gamma \to \mathbb{R}$.
+\end{defn}
+\begin{defn}
+  Let $h = \varepsilon r$ for $0 < \varepsilon << 1$, $r$ some curve in $X$. A functional $\mathcal{F}$ is differentiable if $\mathcal{F}[\gamma + h] - \mathcal{F}[\gamma] = F + R$, where $F$ depends linearly on $h$ (that is, it inherits the required properties of linearity), and $R(\gamma, h) = O(h^2)$. $F(h)$ is called the differential. Note that if $\mathcal{F}$ is differentiable, its differential is uniquely defined.
+\end{defn}
+
+\begin{thm}
+  Let $L$ some functional s.t. $L:X\to \mathbb{R}$. Given a curve $\gamma$ and a small variation of the curve $h$, the functional $\mathcal{F}[\gamma] = \int_{t_0}^{t_1} L(t, x, \dot{x})dt$ is given by
+  \begin{align*}
+    F(h) = \int_{t_0}^{t_1} \bigg[\frac{\partial L}{\partial x} - \frac{d}{dt} \frac{\partial L}{\partial \dot{x}}  \bigg] h dt + \bigg(\frac{\partial L}{\partial \dot{x}}h \bigg)\bigg|_{t_0}^{t_1}.
+  \end{align*}
+\end{thm}
+
+\begin{proof}
+\begin{align*}
+      \mathcal{F}[\gamma + h] - \mathcal{F}[\gamma] & = \int_{t_0}^{t_1} [L(x+h, \dot{x} + \dot{h}, t) - L(x, \dot{x}, t)] dt\\
+      & = \int_{t_0}^{t_1} \bigg[ \frac{\partial L}{\partial x} h + \frac{\partial L}{\partial \dot{x}} \dot{h} \bigg] dt + O(h^2) = F(h) + R
+\end{align*}
+  Integrate
+  \begin{align*}
+    \int_{t_0}^{t_1} \bigg[\frac{\partial L}{\partial \dot{x}} \dot{h}\bigg] dt
+  \end{align*}
+   by parts to pull out a factor of $h$ and arrange terms accordingly.
+\end{proof}
+
+\begin{defn}
+An extremal of a differential for a functional $\mathcal{F}[\gamma]$ is the minimizer or maximizer of the functional. That is, $\gamma$ is a curve s.t. $F(h) = 0$ for all $h$.
+\end{defn}
+
+We are now able to derive the titular Euler-Lagrange equations.
+\begin{thm}
+  The curve $\gamma: x = x(t)$ is an extremal of the functional $\mathcal{F}[\gamma] = \int_{t_0}^{t_1} L(x,\dot{x},t)dt $ on the space of curves passing through the points $x(t_0) = x_0$ and $x(t_1) = x_1$ iff
+  \begin{align*}
+    \frac{d}{dt} \bigg(\frac{\partial L}{\partial \dot{x}} \bigg) - \frac{\partial L}{\partial x} = 0 
+  \end{align*}
+  along the curve $x(t)$.
+\end{thm}
+
+\noindent To prove this theorem, we need to introduce the Fundamental Lemma of the Calculus of Variations.
+
+\begin{lem}[Fundamental Lemma of Variations]
+  If a continuous function $f(t)$, $t_0\leq t \leq t_1$ satisfies $\int_{t_0}^{t_1} f(t) h(t) dt = 0$ for any continuous function $h(t)$ with $h(t_0) = h(t_1) = 0$, then f(t) must be identically 0.
+\end{lem}
+
+\begin{proof}[Proof. Fundamental Lemma of Variations]
+We proceed by contradiction. Let $f(t^*)$ > 0 for some $t_0 \leq t^* \leq t_1$. Since $f$ is continuous, $f(t) > c$ in some neighborhood $\Delta$ of $t^*$ s.t. $t_0 < t^* - d < t^* < t^* + d < t_1$. Let $h(t)$ some function s.t. $h(t) > 0$ on $\Delta$, $h(t)=0$ outside $\Delta$, and $h(t) = 1$ at the midpoint of $\Delta$. It is clear, then, that $\int_{t_0}^{t_1}f(t)h(t) \geq dc > 0$. Therefore, by contradiction, $f(t^*) = 0$ for all $t^*$, $t_0 < t^* < t_1$. 
+\end{proof}
+
+\begin{proof}[Proof. Theorem 1.5]
+Recall $F(h)$. The term after the integral is 0 since $h(t_0) = h(t_1) = 0$. If $\gamma$ is an extremal, then $F(h) = 0$ for all $h$ with $h(t_0) = h(t_1) = 0$. Therefore,
+\begin{align*}
+  \int_{t_0}^{t_1} f(t)h(t)dt = 0.
+\end{align*}
+Here, $f(t)$ is given by
+\begin{align*}
+  f(t) = \frac{d}{dt} \bigg(\frac{\partial L}{\partial \dot{x}}  \bigg) - \frac{\partial L}{\partial x} 
+\end{align*}
+for all $h(t)$. By the lemma, $f(t) \equiv 0$.
+\end{proof}
+
+\begin{defn}[Euler-Lagrange Equation]
+\begin{align*}
+  \frac{d}{dt} \bigg(\frac{\partial L}{\partial \dot{x}}  \bigg) - \frac{\partial L}{\partial x} = 0 
+\end{align*}
+is called the Euler-Lagrange equation for the functional 
+\begin{align*}
+    \mathcal{F}[\gamma] = \int_{t_0}^{t_1}L(x, \dot{x}, t)dt.
+\end{align*}
+\end{defn}
+
+Now that we've arrived at a way to determine the extrema of any given functional, we may apply Hamilton's Principle of Least Action to show that the motion of any mechanical system we want to observe will be governed by its Euler-Lagrange equation.
+
+\subsection{Newton's Second Law, and Hamilton's Principle of Least Action}
+We begin with a non-rigorous statement of Hamilton's Principle that we will build up to.
+\begin{claim}
+The path a mechanical system takes is one where the Euler-Lagrange equations are satisfied at every point along the path. That is, the motion of the mechanical system coincides with the extremals of a functional.
+\end{claim}
+
+\noindent To begin to understand this claim, we introduce a specific form of the functional that we used in our derivation of the Euler-Lagrange equations.
+
+\begin{defn}
+The \textbf{Lagrangian} of a system, $\mathfrak{L}$, is the difference between the kinetic energy $T$ and potential energy $V$ of the system, $\mathfrak{L} = T - V$.
+\end{defn}
+\begin{defn}
+The action of a system, S, is the integral of the Lagrangian over a finite time interval, the initial and terminal time.
+\begin{align*}
+  S[u] = \int_{t_0}^{t_1} \mathfrak{L}dt  
+\end{align*}
+\end{defn}
+
+Recall that for a system of particles with conservative forces defined via the gradient of a potential, Newton's Second Law holds:
+\begin{align*}
+  F_i = \dot{p}_i = m \ddot{x}_i. 
+\end{align*}
+For a mechanical system, the kinetic and potential energies can be expressed as $V = V(x)$ and $T = \frac{1}{2} \sum m_i \dot{x}_i^2$.
+The right-hand side of Newton's Second Law is the derivative of momentum, which can be defined as the derivative of kinetic energy with respect to velocity,
+\begin{align*}
+  \frac{\partial L }{\partial \dot{x}_i} = m\ddot{x}_i = p_i.
+\end{align*}
+The left-hand side of Newton's Second Law is the negative derivative of potential energy with respect to position,
+\begin{align*}
+  % \label{eq:}
+  -\frac{\partial V}{\partial x} = F_i.
+ \end{align*}
+Our goal then, is to demonstrate that Newton's Second Law produces an extremal for the Lagrangian - that is, it satisfies the Euler Lagrange equation at all points.
+
+\begin{thm}[Hamilton's Principle of Least Action]
+Motion of any mechanical system associated with the Lagrangian coincides with the extremals of the functional
+\begin{align*}
+  \Phi[\gamma] = \int_{t_0}^{t_1} \mathfrak{L}  (x, \dot{x}, t)dt.
+\end{align*}
+\end{thm}
+
+\begin{proof}
+By Theorem 1.5, any curve that is an extremal of a functional is identical to a curve where the Euler-Lagrange equation is satisfied everywhere. We will show that Newton's Second Law, $F_{x_i} = \dot{p}_{x_i}$ satisfies the Euler-Lagrange at all points. Utilizing our earlier definitions of kinetic and potential energy, the Lagrangian of our system can be defined as
+\begin{align*}
+  % \label{eq:}
+  \mathfrak{L} = \frac{1}{2} \sum m_i \dot{x}_i^2 - V(x).
+\end{align*}
+Using the Euler-Lagrange equation,
+\begin{align*}
+  % \label{eq:}
+  \frac{\partial \mathfrak{L}}{\partial x} - \frac{d}{dt} \frac{\partial \mathfrak{L}}{\partial \dot{x}} &= F_i - \frac{d}{dt}p_i \\
+  &= F_i - F_i = 0.
+\end{align*}
+So, the Euler-Lagrange equation is satsified.
+\end{proof}
+
+Through this, we have proved the following three statements equivalent for mechanical systems:
+\begin{enumerate}
+\item The optimal path is determined by the Euler-Lagrange equation.
+\item The same optimal path is determined by Newton's Second Law.
+\item The same optimal path is determined by Hamilton's Principle of Least Action.
+\end{enumerate}
+The second statement is of particular use to us, as we may now transition from the Cartesian coordinates of Newtonian Mechanics to the generalized coordinate space of Lagrangian mechanics.
+
+\subsection{Generalized Coordinates, and Lagrange's Equation}
+In a characteristic 
+
+\end{document}

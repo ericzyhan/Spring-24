@@ -1,0 +1,272 @@
+
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\newcommand{\cont}{\subseteq}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage[mathscr]{euscript}
+\usepackage{bm}
+\let\euscr\mathscr \let\mathscr\relax% just so we can load this and rsfs
+\usepackage[scr]{rsfso}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=blue,
+citecolor=blue, urlcolor=blue]{hyperref}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\newcommand{\ddx}{\frac{d}{dx}}
+\newcommand{\dfdx}{\frac{df}{dx}}
+\newcommand{\ddxp}[1]{\frac{d}{dx}\left( #1 \right)}
+\newcommand{\dydx}{\frac{dy}{dx}}
+\let\ds\displaystyle
+\newcommand{\intx}[1]{\int #1 \, dx}
+\newcommand{\intt}[1]{\int #1 \, dt}
+\newcommand{\defint}[3]{\int_{#1}^{#2} #3 \, dx}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\un}{\cup}
+\newcommand{\inter}{\cap}
+\newcommand{\ps}{\mathscr{P}}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newtheorem*{sol}{Solution}
+\newtheorem*{claim}{Claim}
+\newtheorem{problem}{Problem}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+ 
+% EVERYTHING ABOVE THIS LINE IS JUST PREABLE, NO NEED TO MESS WITH IT.__________________________________________________________________________________________
+%
+
+\lhead{MA 562}
+\chead{Eric Han}
+\rhead{\today}
+ 
+% \maketitle
+\section*{Problem Set 4}
+
+\begin{problem}
+Find the fundamental solution for the cable equation on the real line, 
+$$
+v_t = \gamma v_{xx} - \alpha v \text{, } x \in \mathbb{R} \text{, } t > 0 \text{, with } v(0) = \delta(x-\xi)
+$$
+\end{problem}
+We begin by taking the Fourier transform of both sides of our PDE to reduce it to an ODE that exists in the frequency and time domain.
+\begin{align*}
+    \mathcal{F}[v_t] & =\mathcal{F}[\gamma v_{xx} - \alpha v] \\
+    \hat{v_t} & = \mathcal{F}[\gamma v_{xx}] -\mathcal{F} [\alpha v]\\
+     & = \gamma (-k^2 \hat{v}) - \alpha \hat{v}\\
+     & = (-\gamma k^2 - \alpha)\hat{v}.
+\end{align*}
+Let $\hat{v}(k,t) \equiv g(t)$. We arrive at the standard separable ODE
+\begin{align*}
+    \frac{dg}{dt} & = (-\gamma k^2 - \alpha)g(t) \\
+    \frac{1}{g} dg & = (-\gamma k^2 - \alpha) dt \text{,}
+\end{align*}
+where we then take the antiderivative of both sides, ultimately arriving at
+\begin{align}
+    g(t) = \tilde{C}e^{(-\gamma k^2-\alpha)t} \text{.} \label{eq:ode1}
+\end{align}
+To solve for our integrating constant $\tilde{C}$, we must take the Fourier transform of our initial condition in order to bring it into the same frequency and time domain.
+\begin{align*}
+    \mathcal{F}[v(0)] &= \mathcal{F}[\delta(x-\xi)] \\
+    & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \delta(x-\xi)e^{ikx}dx \\
+    & = \frac{1}{\sqrt{2\pi}} e^{-ik\xi}
+\end{align*}
+which we then plug into $g(0)$, giving us
+\begin{align*}
+    g(0) = \frac{e^{-ik\xi}}{\sqrt{2\pi}} &= \tilde{C}e^{(-\gamma k^2-\alpha)0}\\
+    \tilde{C}& = \frac{e^{-ik\xi}}{\sqrt{2\pi}}.
+\end{align*}
+We finally arrive at the general solution from \ref{eq:ode1} in the frequency domain,
+\begin{align}
+    g(t) = e^{-\gamma tk^2 - \alpha t -ik \xi}. \label{eq:gensol1}
+\end{align}
+To find our fundamental solution, we must go back into the spatial and time domain, so we take the inverse Fourier transform of \ref{eq:gensol1}.
+\begin{align*}
+    \mathcal{F}^{-1}[\hat{v}(k, t)]{x} = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-\gamma tk^2 - \alpha t -ik \xi}e^{-ikx} dk
+\end{align*}
+\\ We must first complete the square in our exponent,
+\begin{gather*}
+    -\gamma t k^2 + ik(x-\xi) - \alpha t \\
+    = -\gamma t(k-\frac{i(x-\xi)}{2\gamma t})^2 + (-\alpha t - \frac{(x-\xi)^2}{4\gamma t} ).
+\end{gather*}
+This allows us to solve a Gaussian integral
+\begin{gather*}
+    \frac{1}{2\pi} e^{-\alpha t - \frac{(x-\xi)^2}{4\gamma t}} \int_{-\infty}^{\infty} e^{-\gamma t (k-\frac{x-\xi}{2\gamma t} )^2}dk \\
+    = \frac{1}{2\pi} e^{-\alpha t - \frac{(x-\xi)^2}{4\gamma t}} \sqrt{\frac{\pi}{\gamma t}}.
+\end{gather*}
+\qed
+
+
+\newpage
+\begin{problem}
+Prove that if the self-adjoint linear operator S is positive semi-definite but not positive definite, the mimimum value of its Rayleigh quotient is 0.
+\end{problem}
+
+\begin{proof}
+Let $S: U \rightarrow U \text{ s.t. } S = S^*$. The Rayleigh quotient of a self-adjoint operator $S$ as given is defined as 
+\begin{align}
+    \mathcal{R}[u] = \frac{\langle u, Su\rangle}{||u||^2} \label{eq:rq}
+\end{align}
+for $u\neq 0$. If $S$ is positive semi-definite, then $\forall u \in U$, $\langle u, Su \rangle \geq 0$. When attempting to minimize our Rayleigh quotient, we would like to find
+\begin{align}
+    & \max_{u \backslash 0} ||u||^2 \label{eq:max1}\\
+    & \min_{u\backslash 0}\langle u, Su \rangle. \label{eq:max2}
+\end{align}
+$\ref{eq:max1}$ is found easily. The squared norm is always positive, so generally, $\ref{eq:max1}$ is unbounded. Observe that for $\ref{eq:max2}$, we take the inner product of some function $u \in U$ with $Su$. Recall that because $S$ is positive semi-definite, $\min\langle u, Su \rangle$ is trivially 0. If $\mathcal{N}(S)$ is non-trivial, then $\min_{u\backslash 0}\langle u, Su \rangle = 0$.
+\end{proof}
+
+
+\newpage
+\begin{problem}
+\begin{enumerate}[label=(\alph*)]
+    \; 
+    \item Find the eigenvalues and eigenfunctions for the boundary value problem
+    \begin{align*}
+        \label{eq:bvp1}
+        -x^2u^{''}(x)-xu'(x) = \lambda u, u(1) = u(e) = 0.
+    \end{align*}
+    \item Under which inner product are the eigenfunctions orthogonal? Justify by direct computation.
+    \item Write down the eigenfunction expansion of a function $f(x)$ defined on $1 \leq x \leq e$.
+    \item Find the Green's function for
+    \begin{align*}
+        \label{eq:bvp2}
+        -x^2u^{''}(x) - xu'(x)=f(x), u(1) = u(e) = 0,
+    \end{align*}
+    both in closed form and as a series in the eigenfunctions from part (a).
+    \item Is your Green's function symmetric? Discuss.
+\end{enumerate}
+\end{problem}
+
+\begin{sol}
+    See attached.
+\end{sol}
+
+\newpage
+\begin{problem}
+Derive the Euler-Lagrange equations for a Lagrangian with a scalar domain $t$ and vector-valued position $\textbf{q}$ 
+\end{problem}
+
+The Euler-Lagrange equations for this model of a Lagrangian follows naturally from the standard derivation of the E-L equations of a Lagrangian with scalar domain and position. \\
+
+Let $\mathcal{F}$ a functional of a scalar valued function $u:[a,b]\rightarrow \mathbb{R}$ of form
+\begin{align*}
+\mathcal{F}(u) = \int_a^b L(t, \boldsymbol{q}(t), \dot{\boldsymbol{q}}(t))dt
+\end{align*}
+where L is defined as the Lagrangian. \\
+
+Let $\bm{\eta}:[a,b] \rightarrow \mathbb{R}^n$ a smooth, vector-valued function s.t. $\bm{\eta}(a) = \bm{\eta}(b) = 0$. We introduce variation to each term of our Lagrangian
+\begin{align*}
+\mathcal{F}(u) = \int_a^b L(t, \bm{q}(t)+\varepsilon\bm{\eta}(t), \dot{\bm{q}}+\varepsilon\dot{\bm{\eta}}(t)) dt.
+\end{align*}
+Take the derivative of both sides wrt. $\varepsilon$ and set the quantity equal to 0 to find the critical points of the functional. The key here is to take the partial dervative of each argument of the Lagrangian wrt. each element of the vector after applying the chain rule. That is,
+\begin{gather*}
+    \frac{\partial}{\partial\varepsilon}L(\bm{q}+\varepsilon\bm{\eta}) = \frac{\partial L}{\partial \bm{q}}\frac{\partial \bm{q}}{\partial \varepsilon}\\
+    \frac{\partial}{\partial\bm{q}} =  \begin{bmatrix}
+    \frac{\partial}{\partial q_1} \\[6pt]
+    \frac{\partial}{\partial q_2} \\[6pt]
+    \vdots \\[6pt]
+    \frac{\partial}{\partial q_n} 
+    \end{bmatrix}
+\end{gather*}
+Now, we can define a derivative of $\mathcal{F}$ wrt. \varepsilon.
+\begin{align*}
+    \frac{\partial\mathcal{F}}{\partial\varepsilon} = \int_a^b L_{\bm{q}} \bm{\eta}(t) + L_{\dot{\bm{q}}} \dot{\bm{\eta}}(t)dt = 0.
+\end{align*}
+Integrate by parts to pull out $\bm{\eta}$ from the integrand
+\begin{align*}
+    \int_a^b (L_{\bm{q}} + \frac{\partial}{\partial t} L_{\dot{\bm{q}}})  \bm{\eta}(t) = 0,
+\end{align*}
+which gives us our Euler-Lagrange equations in the form
+\begin{align*}
+    L_{\bm{q}} + \frac{\partial}{\partial t} L_{\dot{\bm{q}}} = 0. 
+\end{align*}
+\qed
+
+
+\newpage
+\begin{problem}
+Derive the Euler-Lagrange equations for a Lagrangian with a scalar domain and position but higher order derivatives, $L(t, q(t), d_tq, d_t^2q, ..., d_t^kq)$.
+\end{problem}
+
+Let $\mathcal{F}$ a functional of a scalar valued function $u:[a,b]\rightarrow \mathbb{R}$ of form
+\begin{align*}
+\mathcal{F}(u) = \int_a^b L(t, q, d_tq, d_t^2q, ..., d_t^kq)dt
+\end{align*}
+where L is defined as the Lagrangian. \\
+
+Let $\eta:[a,b] \rightarrow \mathbb{R}$ a smooth function s.t. $\eta(a) = \eta(b) = \eta'(a) = \eta'(b) = ... = \eta^{(k)}(a) = \eta^{(k)}(b) = 0$. First, we introduce variation to each term in the Lagrangian,
+\begin{align*}
+\mathcal{F}(u) = \int_a^b L(t, q(t)+\varepsilon\eta(t),...,q^{k}(t)+\varepsilon\eta^{(k)}(t))dt.
+\end{align*}
+We then take the derivative of both sides wrt. $\varepsilon$ and set the quantity equal to 0 to find the critical points of the functional,
+\begin{align*}
+\frac{d\mathcal{F}}{d\varepsilon} = \int_a^b L_q \eta(t) + L_{q'}\eta'(t) +...+L_{q^{(k)}} \eta^{(k)}(t)dt = 0.
+\end{align*}
+Integrate by parts to pull out \eta(t) from each term of the integrand
+\begin{gather*}
+\int_a^b L_q\eta(t)dt - \int_a^b \frac{d}{dt} L_{q'} \eta(t)dt + \int_a^b \frac{d}{dt} L_{q''} \eta(t)dt - ... + \int_a^b(-1)^k \frac{d^k}{dt^k} \eta(t) dt \\
+= \int_a^b (\sum_{k=0}^N (-1)^k \frac{d^k}{dt^k} L_{q^{(k)}})\eta(t) ,
+\end{gather*}
+which nicely gives us the Euler-Lagrange equations in form
+\begin{align*}
+    \sum_{k=0}^N (-1)^k \frac{d^k}{dt^k}L_{q^{(k)}} = 0.
+\end{align*}
+\qed
+
+
+\newpage
+\begin{problem}
+Derive the chain and product rules for the functional (Gateaux) derivative.
+\end{problem}
+
+
+The Gateaux derivative is defined 
+\begin{align*}
+    \frac{\partial}{\partial \varepsilon} \mathcal{S}[f(x)+\varepsilon r(x)] \bigg|_{\varepsilon = 0} 
+    = \lim_{\varepsilon \rightarrow 0}\frac{\mathcal{S}[q+\varepsilon r] - \mathcal{S}[q]}{\varepsilon} 
+\end{align*}
+where $\mathcal{S}: U \rightarrow V$. \\
+
+We derive the product rule first.
+Define $\mathcal{F}: U \rightarrow V$ and $\mathcal{G}: U \rightarrow V$
+\begin{align*}
+    \frac{\partial}{\partial \varepsilon} \mathcal{F}[u] \mathcal{G}[u] & = \frac{\partial}{\partial \varepsilon} \mathcal{F}[h(x) + \varepsilon m(x)] \mathcal{G}[h(x) + \varepsilon m(x)] \bigg|_{\varepsilon = 0} \\
+    & = \lim_{\varepsilon \to 0} \frac{\mathcal{F}[h + \varepsilon m]\mathcal{G}[h + \varepsilon m] - \mathcal{F}[h]\mathcal{G}[h]}{\varepsilon} \\
+    & = \lim_{\varepsilon \to 0} \frac{\mathcal{F}[h + \varepsilon m]\mathcal{G}[h + \varepsilon m] - \mathcal{F}[h]\mathcal{G}[h+\varepsilon m] + \mathcal{F}[h]\mathcal{G}[h+\varepsilon m] - \mathcal{F}[h]\mathcal{G}[h]}{\varepsilon} \\
+    & = \lim_{\varepsilon \to 0} \mathcal{G}[h + \varepsilon m] \frac{\mathcal{F}[h+\varepsilon m] - \mathcal{F}[h]}{\varepsilon} + \mathcal{F}[h] \frac{\mathcal{G}[h+\varepsilon m] - \mathcal{G}[h]}{\varepsilon} \\
+    & = \mathcal{G}[u] \frac{\partial}{\partial \varepsilon}\mathcal{F}[u] + \mathcal{F}[u] \frac{\partial}{\partial \varepsilon}\mathcal{G}[u]
+\end{align*}
+The product rule for the Gateaux derivative is identical to the product rule for the standard derivative.\\
+
+Now we derive the chain rule.
+\begin{align*}
+\frac{\partial}{\partial \varepsilon} \mathcal{F}[\mathcal{G}[u]] 
+& = \lim_{\varepsilon \to 0}\frac{\mathcal{F}[\mathcal{G}[h+\varepsilon m]]}{\varepsilon} \\
+& = \lim_{\varepsilon \to 0}
+\frac{\mathcal{F}[\mathcal{G}[h+\varepsilon m]]-\mathcal{F}[\mathcal{G}[h]]}{\mathcal{G}[h+\varepsilon m] - \mathcal{G}[h]} \cdot \frac{\mathcal{G}[h+\varepsilon m] - \mathcal{G}[h]}{\varepsilon}  \\
+\end{align*}
+Thank you Will for suggesting the next step.\\
+Let $j = \mathcal{G}[h + \varepsilon k] - \mathcal{G}[h]$.
+\begin{align*}
+    & \Rightarrow \lim_{\varepsilon \to 0} \frac{\mathcal{F}[j \zeta + \mathcal{G}[h]] - \mathcal{F}[\mathcal{G}[h]]}{j} \cdot \frac{\mathcal{G}[h+\varepsilon k] - \mathcal{G}[h]}{\varepsilon} \\
+    & \Rightarrow \frac{\partial}{\partial \varepsilon}\mathcal{F}[\mathcal{G}[h]] = \frac{\partial\mathcal{F}[\mathcal{G}]}{\partial \varepsilon} \cdot \frac{\partial G}{\partial \varepsilon} 
+\end{align*}
+\qed
+\newpage 
+\begin{problem}
+See attached.
+\end{problem}
+
+% THE DOCUMENT IS ESSENTIALLY DONE AT THIS POINT, NO NEED TO EDIT ANYTHING BELOW THIS______________________________________________________________________________________________
+ 
+\end{document}
