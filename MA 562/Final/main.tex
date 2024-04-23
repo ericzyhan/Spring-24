@@ -1,4 +1,4 @@
-\documentclass[psamsfonts]{amsart}
+\documentclass[10pt, psamsfonts]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{hyperref}
@@ -10,6 +10,7 @@
 \usepackage{mathrsfs}
 \usepackage{setspace}
 \usepackage[margin=1in]{geometry}
+% \usepackage[fontsize=11pt]{scrextend}
 
 \setstretch{1.0}
 
@@ -80,7 +81,7 @@ The study of classical mechanics can be divided into 3 central formulations:
   \item[] \textbf{Lagrangian Mechanics}, which operates in a generalized coordinate space.
   \item[] \textbf{Hamiltonian Mechanics}, which operates in a phase space.
 \end{itemize}
-While we will only briefly touch on Hamiltonian mechanics, it is important for us the understand the distinction between Newtonian and Lagrangian mechanics. The first part of this paper will motivate the development of Lagrangian mechanics and tackle the derivation of the Euler-Lagrange equations and prove its equivalency to Newton's Second Law. Classical mechanics initially relied on Newtonian mechanics, but the development of the more abstract, powerful formulation of Lagrangian mechanics allow us to exploit transformational invariances and symmetries in a generalized coordinate system that are difficult to see in a standard Cartesian system using vectors.
+While we will only briefly touch on Hamiltonian mechanics, it is important for us to understand the distinction between Newtonian and Lagrangian mechanics. The first part of this paper will motivate the development of Lagrangian mechanics and tackle the derivation of the Euler-Lagrange equations and prove its equivalency to Newton's Second Law. Classical mechanics initially relied on Newtonian mechanics, but the development of the more abstract, powerful formulation of Lagrangian mechanics allow us to exploit transformational invariances and symmetries in a generalized coordinate system that are difficult to see in a standard Cartesian system using vectors.
 
 The next part of the paper will introduce the formal statement of the Two-Body Problem and showcase the application of Lagrangian mechanics that allow us to almost magically reduce a 12-dimensional problem into a 1-dimensional problem, thereby allowing us to produce an explicit, solvable equation for the Two-Body Problem. We conclude with a brief section on the difficulty of the Three-Body Problem and its current unsolvability.
 
@@ -187,7 +188,7 @@ Recall that for a system of particles with conservative forces defined via the g
 For a mechanical system, the kinetic and potential energies can be expressed as $V = V(x)$ and $T = \frac{1}{2} \sum m_i \dot{x}_i^2$.
 The right-hand side of Newton's Second Law is the derivative of momentum, which can be defined as the derivative of kinetic energy with respect to velocity,
 \begin{align*}
-  \frac{\partial L }{\partial \dot{x}_i} = m\ddot{x}_i = p_i.
+  \frac{\partial T }{\partial \dot{x}_i} = m\ddot{x}_i = p_i.
 \end{align*}
 The left-hand side of Newton's Second Law is the negative derivative of potential energy with respect to position,
 \begin{align*}
@@ -212,7 +213,8 @@ By Theorem 1.5, any curve that is an extremal of a functional is identical to a 
 Using the Euler-Lagrange equation,
 \begin{align*}
   % \label{eq:}
-  \frac{\partial \mathfrak{L}}{\partial x} - \frac{d}{dt} \frac{\partial \mathfrak{L}}{\partial \dot{x}} &= F_i - \frac{d}{dt}p_i \\
+  \frac{\partial \mathfrak{L}}{\partial x} - \frac{d}{dt} \frac{\partial \mathfrak{L}}{\partial \dot{x}} &= -\frac{\partial V}{\partial x} - \frac{d}{dt} \frac{\partial T}{\partial \dot{x}_i}  \\
+  &= F_i - \frac{d}{dt}p_i \\
   &= F_i - F_i = 0.
 \end{align*}
 So, the Euler-Lagrange equation is satsified.
@@ -226,7 +228,76 @@ Through this, we have proved the following three statements equivalent for mecha
 \end{enumerate}
 The second statement is of particular use to us, as we may now transition from the Cartesian coordinates of Newtonian Mechanics to the generalized coordinate space of Lagrangian mechanics.
 
-\subsection{Generalized Coordinates, and Lagrange's Equation}
-In a characteristic 
+\subsection{Generalized Coordinates, and Lagrange's Equations}
+In a characteristic move for physicists and mathematicians, we attempt to generalize mechanics in Cartesian space (which utilizes vectors) to a generalized coordinate space where we may use scalar representations of motion, such as kinetic and potential energy. 
+
+The Lagrangian formulation of classical mechanics has two central advantages over the Newtonian formulation. First, Lagrange's equations take the same form in any coordinate system, as coordinate transforms are as easy as defining a function that transforms each coordinate in your system. Second, the Lagrangian approach eliminates forces of constraints, such as a particle forced to move on a curved surface. We will be exploiting the first of these two properties in this section.
+
+We must first define our generalized coordinate system.
+\begin{defn}
+\;
+\begin{itemize}
+\item[] \textbf{Generalized Coordinates}: $\{q_1, q_2, ..., q_i\}$
+\item[] \textbf{Generalized Velocities}: $\{\dot{q}_1, \dot{q}_2, ..., \dot{q}_i\}$
+\item[] \textbf{Generalized Force}: $\cfrac{\partial \mathfrak{L}}{\partial q_i} $
+\item[] \textbf{Generalized Momentum}: $\cfrac{\partial \mathfrak{L}}{\partial \dot{q}_i}$
+\end{itemize}
+\end{defn}
+\noindent We assume that our generalized coordinates parametrize all of coordinate space, so that each point can be described by $\{q_j\}$ or $\{x_i\}$ where $i, j \in [1, N]$. Each set of coordinates can be thought of as a function of the other and time:
+\begin{align*}
+  % \label{eq:}
+  q_j &= q_j(x_1,...,x_N, t)\\
+  x_i &= x_i(q_1,...,q_N, t).
+\end{align*}
+We may use our new generalized coordinates in the Lagrangian.
+
+\begin{defn}
+Let $\mathfrak{L}[x, \dot{x}, t]$ be a Lagrangian in a Cartesian space. Then, 
+\begin{align*}
+  % \label{eq:}
+  \tilde{\mathfrak{L}}[q, \dot{q}, t] = \mathfrak{L}[x(q,t), \dot{x}(q, \dot{q}, t)] 
+\end{align*}
+is the Lagrangian in a generalized coordinate space. These two functions agree at corresponding physical points in space.
+\end{defn}
+
+Before continuing any further, it's important to understand our final goal for generalizing Newtonian mechanics into the Lagrangian framework. The generalized coordinate space of Lagrangian mechanics will allow us to exploit the invariance of the Lagrangian under coordinate transformation in space. This is an important application of Noether's theorem that will allow us to solve the Two-Body Problem. In order to provide a generalized version of Noether's theorem, we require the following definition of invariance:
+
+\begin{defn}
+Consider a family of transformations of $\mathbb{R}^d$, $h_s(q):\mathbb{R}^d \to \mathbb{R}^d $, where $s \in \mathbb{R}$ and $h_s(q)$ in both $q$ and $s$, and $h_0(q) = q$. A Lagrangian $\mathfrak{L}[q, \dot{q}, t]$ is invariant under the action of the family of transformations of $\mathbb{R}^d$, $h_s(q): \mathbb{R}^n \to \mathbb{R}^d$, if $\mathfrak{L}$ does not change when $q(t)$ is replaced by the transform $h_s(q(t))$. That is, for any function $q(t)$,
+\begin{align*}
+  % \label{eq:}
+  \mathfrak{L}[h_s(q(t)), \frac{d}{dt} h_s(q(t))] = \mathfrak{L}[q(t), \frac{d}{dt} q(t)].
+\end{align*}
+\end{defn}
+
+\begin{thm}[Noether's Theorem]
+If the Lagrangian $\mathfrak{L}$ is invariant under the action of a one-parameter family of transformations, $h_s(u(t))$, then the quantity
+\begin{align*}
+  % \label{eq:}
+  I(q, \dot{q}) \equiv L_{\dot{q}} \cdot \frac{d}{ds} h_s(q) \bigg|_{s=0}
+\end{align*}
+is constant along any solution of the Euler-Lagrange equation. This quantity is called the integral of motion.
+\end{thm}
+\noindent The proof of this theorem is left to Chertkov and Clark.
+
+Invariance under coordinate transformation, then, lets us choose a coordinate system that is convenient for us, as the integral of motion of the Lagrangian is preserved across any coordinate system we might choose to use.
+
+To prove that the Lagrangian is invariant under coordinate transformations, we must make use of a proposition formally defining velocity in generalized coordinates.
+\begin{prop}
+If the system is allowed to vary, the change in Cartesian coordinates can also be expressed in terms of generalized coordinates. That is,
+\begin{gather*}
+  % \label{eq:}
+  \Delta x_i = \frac{\partial x_i}{\partial q_1}\Delta q_1 + \frac{\partial x_i}{\partial q_2}\Delta q_2 + ... + \frac{\partial x_i}{\partial q_n}\Delta q_n =  \sum_j \frac{\partial x_i}{\partial q_j} \Delta q_j \\
+  \Delta q_j = \frac{\partial q_j}{\partial x_1} \Delta x_1 + \frac{\partial q_j}{\partial x_2} \Delta x_2 + ... + \frac{\partial q_j}{\partial x_n} \Delta x_n = \sum_i \frac{\partial q_j}{\partial x_i} \Delta x_i
+\end{gather*}
+We can extend this notion to the time derivative to express velocity in the same way.
+\begin{align*}
+  % \label{eq:}
+  \dot{x}_i &= \sum_j \frac{\partial x_i}{\partial q_j} \dot{q}_j\\
+  \dot{q}_j &= \sum_i \frac{\partial q_j}{\partial x_i} \dot{x}_i.
+\end{align*}
+\end{prop}
+
+
 
 \end{document}
