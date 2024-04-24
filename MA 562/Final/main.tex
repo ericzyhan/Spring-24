@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{amsthm}
 \usepackage{cleveref}
+\usepackage{bm}
 % \usepackage[fontsize=11pt]{scrextend}
 
 \setstretch{1.0}
@@ -375,7 +376,24 @@ This is the central result that we have been aiming for. We began by attempting 
 The Two-Body Problem is one of the most fundamental problems in the field of classical mechanics. It was first tackled by Newton in his \textit{Principia} using geometric arguments and his Universal Law of Gravitation. Broadly, the problem deals with an isolated system of two bodies. We assume that the only forces in the system are those of the two bodies acting upon one another. There are several examples of this problem that naturally arise in our universe: the moon and the earth, a planet and its star, or a binary system of two stars. Realistically, we cannot exclude even the "small" perturbative forces that these systems experience, but the reduction of the problem will still provide a good first approximation of such systems.
 
 \subsection{Applying the Euler-Lagrange Equations}
-Consider two bodies in space with masses $m_1, m_2$ at positions $r_1, r_2$ in space. The size of the bodies is irrelevant in that they are separated so greatly in magnitude that irrespective of their actual size, they may be represented by point masses in space. The only forces present in the system are $F_{12} $ and $F_{21}$. We assume these are conservative forces and can thus be regarded as gradients of the potential, $\mathcal{U}(r_1, r_2)$
+Consider two bodies in space with masses $m_1, m_2$ at positions $r_1, r_2$ in space. The size of the bodies is irrelevant in that they are separated so greatly in magnitude that irrespective of their actual size, they may be represented by point masses in space. The only forces present in the system are the force of body 1 on body 2 and vice versa, $F_{12} $ and $F_{21}$. We assume these are conservative forces and can thus be regarded as gradients of the potential, $U(\bm{r_1}, \bm{r_2})$.\\
+
+To describe $n$ bodies in standard Euclidean 3-space $\mathbb{R}^3$, one normally needs a $6n$-dimensional configuration space. 3 exist to denote position, and 3 exist for momentum. For a Two-Body Problem, one would need 12 separate equations describing each parameter over time. However, because of the Euler-Lagrange equations we've derived, we may attempt to reduce the problem to a one-dimensional problem by exploiting transformational invariances in the Lagrangian.
+
+\begin{defn}
+  For any isolated system where the only forces in the system are those of the particles acting upon one another, the system must be \textbf{translationally invariant}. That is, if we bodily translate the system to a new position without changing the relative positions of the particles, the interparticle forces should stay the same.
+\end{defn}
+
+Here, $U(\bm{r_1}, \bm{r_2})$ is an isolated system, so it is translationally invariant. Thus, it depends exclusively on the position of the objects relative to each other, $U(\bm{r_1}, \bm{r_2}) = U(|\bm{r_1} - \bm{r_2}|) $. We thus define a new variable,
+\begin{align*}
+  % \label{eq:}
+  \bm{r} = |\bm{r_1} - \bm{r_2}|.
+\end{align*}
+We refer to $r$ as the magnitude of the relative position $\bm{r}$. With this definition, we can also restate our definition of potential energy to depend exclusively on $r$,
+\begin{align*}
+  % \label{eq:}
+  U = U(r).
+\end{align*}
 
 \newpage
 \section*{Appendix}
