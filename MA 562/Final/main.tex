@@ -1,4 +1,4 @@
-\documentclass[10.5pt, psamsfonts]{amsart}
+\documentclass[10pt, psamsfonts]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 % \usepackage{hyperref}
@@ -55,7 +55,7 @@
 \bibliographystyle{plain}
 
 %--------Meta Data: Fill in your info------
-\title{On Lagrangian Mechanics and the Three-Body Problem}
+\title{On Lagrangian Mechanics and the Two-Body Problem}
 
 \author{Eric Han}
 
@@ -85,7 +85,7 @@ The study of classical mechanics can be divided into 3 central formulations:
   \item[] \textbf{Lagrangian Mechanics}, which operates in a generalized coordinate space.
   \item[] \textbf{Hamiltonian Mechanics}, which operates in a phase space.
 \end{itemize}
-While we will only briefly touch on Hamiltonian mechanics, it is important for us to understand the distinction between Newtonian and Lagrangian mechanics. The first part of this paper will motivate the development of Lagrangian mechanics and tackle the derivation of the Euler-Lagrange equations and prove its equivalency to Newton's Second Law. Classical mechanics initially relied on Newtonian mechanics, but the development of the more abstract, powerful formulation of Lagrangian mechanics allow us to exploit transformational invariances and symmetries in a generalized coordinate system that are difficult to see in a standard Cartesian system using vectors.
+While we will unfortunately not touch on Hamiltonian mechanics, it is important for us to understand the distinction between Newtonian and Lagrangian mechanics. The first part of this paper will motivate the development of Lagrangian mechanics and tackle the derivation of the Euler-Lagrange equations and prove its equivalency to Newton's Second Law. Classical mechanics initially relied on Newtonian mechanics, but the development of the more abstract, powerful formulation of Lagrangian mechanics allow us to exploit transformational invariances and symmetries in a generalized coordinate system that are difficult to see in a standard Cartesian system using vectors.
 
 The next part of the paper will introduce the formal statement of the Two-Body Problem and showcase the application of Lagrangian mechanics that allow us to almost magically reduce a 12-dimensional problem into a 1-dimensional problem, thereby allowing us to produce an explicit, solvable equation for the Two-Body Problem. We conclude with a brief section on the difficulty of the Three-Body Problem and its current unsolvability.
 
@@ -165,12 +165,12 @@ is called the Euler-Lagrange equation for the functional
 \end{align*}
 \end{defn}
 
-Now that we've arrived at a way to determine the extrema of any given functional, we may apply Hamilton's Principle of Least Action to show that the motion of any mechanical system we want to observe will be governed by its Euler-Lagrange equation.
+Now that we've arrived at a way to determine the extrema of any given functional, we apply Hamilton's Principle of Least Action to show that the motion of any mechanical system we want to observe will be governed by its Euler-Lagrange equation.
 
 \subsection{Newton's Second Law, and Hamilton's Principle of Least Action}
 We begin with a non-rigorous statement of Hamilton's Principle that we will build up to.
 \begin{claim}
-The path a mechanical system takes is one where the Euler-Lagrange equations are satisfied at every point along the path. That is, the motion of the mechanical system coincides with the extremals of a functional.
+The path a mechanical system takes is one where the Euler-Lagrange equations are satisfied at every point along the path. That is, the motion of the mechanical system coincides with the extremals of a functional that models our system.
 \end{claim}
 
 \noindent To begin to understand this claim, we introduce a specific form of the functional that we used in our derivation of the Euler-Lagrange equations.
@@ -186,18 +186,19 @@ The action of a system, S, is the integral of the Lagrangian over a finite time 
 \end{defn}
 
 Recall that for a system of particles with conservative forces defined via the gradient of a potential, Newton's Second Law holds:
+\begin{align}
+    \label{eq:Newton's Second}
+  \bm{F}_i = \dot{\bm{p}}_i = m \ddot{x}_i. 
+\end{align}
+For a mechanical system, the kinetic and potential energies can be expressed as $V = V(x)$ and \\ $T = \frac{1}{2} \sum_i m_i \dot{x}_i^2$.
+The right-hand side of Newton's Second Law (\ref{eq:Newton's Second}) is the derivative of momentum, which can be defined as the derivative of kinetic energy with respect to velocity,
 \begin{align*}
-  F_i = \dot{p}_i = m \ddot{x}_i. 
+  \frac{\partial T }{\partial \dot{x}_i} = m\ddot{x}_i = \bm{p}_i.
 \end{align*}
-For a mechanical system, the kinetic and potential energies can be expressed as $V = V(x)$ and $T = \frac{1}{2} \sum m_i \dot{x}_i^2$.
-The right-hand side of Newton's Second Law is the derivative of momentum, which can be defined as the derivative of kinetic energy with respect to velocity,
-\begin{align*}
-  \frac{\partial T }{\partial \dot{x}_i} = m\ddot{x}_i = p_i.
-\end{align*}
-The left-hand side of Newton's Second Law is the negative derivative of potential energy with respect to position,
+The left-hand side of (\ref{eq:Newton's Second}) is the negative derivative of potential energy with respect to position,
 \begin{align*}
   % \label{eq:}
-  -\frac{\partial V}{\partial x} = F_i.
+  -\frac{\partial V}{\partial x} = \bm{F}_i.
  \end{align*}
 Our goal then, is to demonstrate that Newton's Second Law produces an extremal for the Lagrangian - that is, it satisfies the Euler Lagrange equation at all points.
 
@@ -212,14 +213,14 @@ Motion of any mechanical system associated with the Lagrangian coincides with th
 By Theorem 1.5, any curve that is an extremal of a functional is identical to a curve where the Euler-Lagrange equation is satisfied everywhere. We will show that Newton's Second Law, $F_{x_i} = \dot{p}_{x_i}$ satisfies the Euler-Lagrange at all points. Utilizing our earlier definitions of kinetic and potential energy, the Lagrangian of our system can be defined as
 \begin{align*}
   % \label{eq:}
-  \mathfrak{L} = \frac{1}{2} \sum m_i \dot{x}_i^2 - V(x).
+  \mathfrak{L} = \frac{1}{2} \sum_i m_i \dot{x}_i^2 - V(x).
 \end{align*}
 Using the Euler-Lagrange equation,
 \begin{align*}
   % \label{eq:}
   \frac{\partial \mathfrak{L}}{\partial x} - \frac{d}{dt} \frac{\partial \mathfrak{L}}{\partial \dot{x}} &= -\frac{\partial V}{\partial x} - \frac{d}{dt} \frac{\partial T}{\partial \dot{x}_i}  \\
-  &= F_i - \frac{d}{dt}p_i \\
-  &= F_i - F_i = 0.
+  &= \bm{F}_i - \frac{d}{dt}\bm{p}_i \\
+  &= \bm{F}_i - \bm{F}_i = 0.
 \end{align*}
 So, the Euler-Lagrange equation is satisfied.
 \end{proof}
@@ -234,12 +235,12 @@ The second statement is of particular use to us, as we may now transition from t
 
 \subsection{Generalized Coordinates and Invariance}
 In a characteristic move for physicists and mathematicians, we attempt to generalize mechanics in Cartesian space (which utilizes vectors) to a generalized coordinate space where we may use scalar representations of motion, such as kinetic and potential energy. 
-There will be an attempt to derive everything through the techniques of the calculus of variations, rather than proofs by trust in god as physicists normally do.
+However, unlike physicists and more akin to mathematicians, there will be an effort to rely as little as possible on physical assumptions, and to try and derive most things through techniques of the calculus of variations.
 
 The Lagrangian formulation of classical mechanics has two central advantages over the Newtonian formulation. First, Lagrange's equations take the same form in any coordinate system, as coordinate transforms are as easy as defining a function that transforms each coordinate in your system. Second, the Lagrangian approach eliminates forces of constraints, such as a particle forced to move on a curved surface. We will be exploiting the first of these two properties in this section.
 
 We must first define our generalized coordinate system.
-\begin{defn}
+\begin{defns}
 \;
 \begin{itemize}
 \item[] \textbf{Generalized Coordinates}: $\{q_1, q_2, ..., q_i\}$
@@ -247,12 +248,12 @@ We must first define our generalized coordinate system.
 \item[] \textbf{Generalized Force}: $\cfrac{\partial \mathfrak{L}}{\partial q_i} $
 \item[] \textbf{Generalized Momentum}: $\cfrac{\partial \mathfrak{L}}{\partial \dot{q}_i}$
 \end{itemize}
-\end{defn}
-\noindent We assume that our generalized coordinates parametrize all of coordinate space, so that each point can be described by $\{q_j\}$ or $\{x_i\}$ where $i, j \in [1, N]$. Each set of coordinates can be thought of as a function of the other and time:
+\end{defns}
+\noindent We assume that our generalized coordinates parametrize all of our configuration space, so that each point can be described by $\{q_j\}$ or $\{x_i\}$ where $i, j \in [1, N]$. Each set of coordinates can be thought of as a function of the other and time:
 \begin{align*}
   % \label{eq:}
-  q_j &= q_j(x_1,...,x_N, t)\\
-  x_i &= x_i(q_1,...,q_N, t).
+  q_j &= q_j(x_1,...,x_N; t)\\
+  x_i &= x_i(q_1,...,q_N; t).
 \end{align*}
 We may use our new generalized coordinates in the Lagrangian.
 
@@ -289,7 +290,7 @@ is constant along any solution of the Euler-Lagrange equation. This quantity is 
 \end{thm}
 \noindent The details of the proof for this theorem are left to Chertkov and Clark.\\
 
-Invariance under coordinate transformation lets us choose a coordinate system that is convenient for us, as the integral of motion of the Lagrangian is preserved across any coordinate system we might choose to use. Our aim, then, is to prove that the Lagrangian is invariant under coordinate transformations.
+Invariance under coordinate transformation lets us choose a coordinate system that is convenient for us, as the integral of motion of the Lagrangian is preserved across any coordinate system we might choose to use. Our aim then, is to prove that the Lagrangian is invariant under coordinate transformations.
 
 \begin{defn}
 Let $q_j$ denote position in generalized coordinates. Then velocity is defined as
@@ -318,27 +319,27 @@ The chain rule tells us that
 \begin{align}
   \label{eq:Chain Rule Lagrangian xdot} 
   % \setcounter{equation}{19}
-  \frac{\partial L}{\partial \dot{x}_j}  = \sum_k \frac{\partial L}{\partial q_k} \frac{\partial q_k}{\partial \dot{x}_j} + \frac{\partial L}{\partial \dot{q}_k} \frac{\partial \dot{q}_k}{\partial \dot{x}_j}.
+  \frac{\partial L}{\partial \dot{x}_i}  = \sum_k \frac{\partial L}{\partial q_k} \frac{\partial q_k}{\partial \dot{x}_j} + \frac{\partial L}{\partial \dot{q}_k} \frac{\partial \dot{q}_k}{\partial \dot{x}_j}.
 \end{align}
 The first term disappears because $q_k$ is dependent on position and time $x_k$ and $t$, but not on velocity $\dot{x}_k$. From (\ref{eq:Proportionality}), we may rewrite (\ref{eq:Chain Rule Lagrangian xdot}) as
 \begin{align*}
   % \label{eq:}
-  \frac{\partial L}{\partial \dot{x}_i} = \sum_j \frac{\partial L}{\partial q} 
+  \frac{\partial L}{\partial \dot{x}_i} = \sum_j \frac{\partial L}{\partial \dot{q}_j} \frac{\partial q_j}{\partial x_i}. 
 \end{align*}
 The Euler-Lagrange equation demands that we take the time derivative of this function. We don't want a partial derivative, which holds the point in configuration space fixed, but rather the \textit{total} time derivative, which is the derivative along the path that the system takes as it moves through configuration spaces.
 
 \begin{defn}
 For any function $f(x,t)$ in a configuration space, the total time derivative is
-\begin{align*}
-  % \label{eq:}
+\begin{align}
+  \label{eq:Time Derivative}
   \frac{df}{dt} = \sum_j \frac{\partial f}{\partial x_j} \dot{x}_j + \frac{\partial f}{\partial t}. 
-\end{align*}
+\end{align}
 \end{defn}
 ((Appendix reference here))\\
-\noindent So, the time derivative of $\partial L/\partial \dot{x}_i$ is
+\noindent So, using the product rule and then applying (\ref{eq:Time Derivative}) to the second term after the product rule, the time derivative of $\partial L/\partial \dot{x}_i$ is
 \begin{align}
   \label{eq:Time Derivative Lagrangian}
-  \sum_j \bigg(\frac{d}{dt} \frac{\partial L}{\partial \dot{x}_j}  \bigg) \frac{\partial q_j}{\partial x_i} + \sum_j \frac{\partial L}{\partial \dot{q}_j} \bigg(\frac{\partial^2 q_j}{\partial x_i \partial x_k} \dot{x}_k + \frac{\partial^2 q_j}{\partial x_i \partial t}  \bigg).
+  \sum_j \bigg(\frac{d}{dt} \frac{\partial L}{\partial \dot{x}_j}  \bigg) \frac{\partial q_j}{\partial x_i} + \sum_j \frac{\partial L}{\partial \dot{q}_j} \bigg(\sum_{k} \frac{\partial^2 q_j}{\partial x_i \partial x_k} \dot{x}_k + \frac{\partial^2 q_j}{\partial x_i \partial t}  \bigg).
 \end{align}
 
 Also, by the chain rule, 
@@ -367,36 +368,130 @@ The matrix operator provided by $\partial q_j/\partial x_i $ is nonsingular, and
   \frac{d}{dt} \frac{\partial L}{\partial \dot{q}_j} - \frac{\partial L}{\partial q_j} = 0
 \end{align*}
 
-We have thus derived the Euler-Lagrange equations in generalized coordinates, and proved that they are invariant to coordinate transformation.
+We have thus derived the Euler-Lagrange equations in generalized coordinates, and proved that they are invariant to coordinate transformation.\footnote[1]{This proof is somewhat unwieldy due to the tedious algebra one must slog their way through in applying (\ref{eq:Time Derivative}). However, the advantage of this proof is that it provides an explicit, closed form for the derivatives we use in our calculations.  I also really don't want to typeset the new proof. For a far more elegant proof using a non-explicit time derivative, reference David Morin's Classical Mechanics, Chapter 6.4.}
 \end{proof}
 
-This is the central result that we have been aiming for. We began by attempting to discern the most efficient path for a system with constraints which we modeled as an optimization problem in a Banach space. We arrived at the Euler-Lagrange equations for an arbitrary functional, which gave us the extrema of the functional. We then extended this notion to the realm of classical mechanics by introducing Hamilton's Principle of Least Action and proving it equivalent to both Newton's Second Law of Motion and the Euler-Lagrange equations, showing that the most optimized paths of motion for mechanical systems were those which satisfied the Euler-Lagrange equations. Finally, we showed that the Euler-Lagrange equations are invariant under coordinate transformations, allowing us to adopt a more abstract formulization of mechanics in Langrangian mechanics. Now, we may approach the Two-Body Problem with these tools in hand.
+This is the central result that we have been aiming for. We began by attempting to discern the most efficient path for a system with constraints which we modeled as an optimization problem in a Banach space. We arrived at the Euler-Lagrange equations for an arbitrary functional, which gave us the extrema of the functional. We then extended this notion to the realm of classical mechanics by introducing Hamilton's Principle of Least Action and proving it equivalent to both Newton's Second Law of Motion and the Euler-Lagrange equations, showing that the most optimized paths of motion for mechanical systems were those which satisfied the Euler-Lagrange equations. Finally, we showed that the Euler-Lagrange equations are invariant under coordinate transformations, allowing us to adopt a more abstract formalization of mechanics in Langrangian mechanics. Now, we may approach the Two-Body Problem with these tools in hand.
 
 \section{The Two-Body Problem}
 The Two-Body Problem is one of the most fundamental problems in the field of classical mechanics. It was first tackled by Newton in his \textit{Principia} using geometric arguments and his Universal Law of Gravitation. Broadly, the problem deals with an isolated system of two bodies. We assume that the only forces in the system are those of the two bodies acting upon one another. There are several examples of this problem that naturally arise in our universe: the moon and the earth, a planet and its star, or a binary system of two stars. Realistically, we cannot exclude even the "small" perturbative forces that these systems experience, but the reduction of the problem will still provide a good first approximation of such systems.
 
 \subsection{Applying the Euler-Lagrange Equations}
-Consider two bodies in space with masses $m_1, m_2$ at positions $r_1, r_2$ in space. The size of the bodies is irrelevant in that they are separated so greatly in magnitude that irrespective of their actual size, they may be represented by point masses in space. The only forces present in the system are the force of body 1 on body 2 and vice versa, $F_{12} $ and $F_{21}$. We assume these are conservative forces and can thus be regarded as gradients of the potential, $U(\bm{r_1}, \bm{r_2})$.\\
+Consider two bodies in space with masses $m_1, m_2$ at positions $\bm{r}_1, \bm{r}_2$ in space. The size of the bodies is irrelevant in that they are separated so greatly in magnitude that irrespective of their actual size, they may be represented by point masses in space. The only forces present in the system are the force of body 1 on body 2 and vice versa, $\bm{F}_{12} $ and $\bm{F}_{21}$. \\
+% We assume these are conservative forces and can thus be regarded as gradients of the potential, $U(\bm{r}_1, \bm{r}_2)$.\\ Maybe I'll include this? I want to talk about conservative forces later.
 
-To describe $n$ bodies in standard Euclidean 3-space $\mathbb{R}^3$, one normally needs a $6n$-dimensional configuration space. 3 exist to denote position, and 3 exist for momentum. For a Two-Body Problem, one would need 12 separate equations describing each parameter over time. However, because of the Euler-Lagrange equations we've derived, we may attempt to reduce the problem to a one-dimensional problem by exploiting transformational invariances in the Lagrangian.
+To describe $n$ bodies in standard Euclidean 3-space $\mathbb{R}^3$, one normally needs a $6n$-dimensional configuration space. 3 exist to denote position, and 3 exist for momentum. For the Two-Body Problem, one would need 12 separate equations describing each parameter over time. However, because of the Euler-Lagrange equations we've derived, we may attempt to reduce the problem to a one-dimensional problem by exploiting transformational invariances in the Lagrangian.
 
 \begin{defn}
   For any isolated system where the only forces in the system are those of the particles acting upon one another, the system must be \textbf{translationally invariant}. That is, if we bodily translate the system to a new position without changing the relative positions of the particles, the interparticle forces should stay the same.
 \end{defn}
 
-Here, $U(\bm{r_1}, \bm{r_2})$ is an isolated system, so it is translationally invariant. Thus, it depends exclusively on the position of the objects relative to each other, $U(\bm{r_1}, \bm{r_2}) = U(|\bm{r_1} - \bm{r_2}|) $. We thus define a new variable,
+First, we would like to state our scalar quantities of energy for the problem. Here, $U(\bm{r}_1, \bm{r}_2)$ is the potential of an isolated system, so it is translationally invariant. Thus, it depends exclusively on the position of the objects relative to each other, $U(\bm{r}_1, \bm{r}_2) = U(|\bm{r}_1 - \bm{r}_2|) $. We thus define a new variable,
 \begin{align*}
   % \label{eq:}
-  \bm{r} = |\bm{r_1} - \bm{r_2}|.
+  \bm{r} = |\bm{r}_1 - \bm{r}_2|.
 \end{align*}
 We refer to $r$ as the magnitude of the relative position $\bm{r}$. With this definition, we can also restate our definition of potential energy to depend exclusively on $r$,
 \begin{align*}
   % \label{eq:}
   U = U(r).
 \end{align*}
+Recall that kinetic energy is defined 
+\begin{align*}
+  % \label{eq:}
+  T &= \frac{1}{2} \sum_i  m_i \dot{x}_i^2 \\
+    &= \frac{1}{2} (m_1 \dot{\bm{r}_1}^2 + m_2 \dot{\bm{r}_2}^2).
+\end{align*}
+
+We may now frame our problem mathematically. We would like to find the possible motions of two bodies that obey the Lagrangian
+\begin{gather*}
+  \mathfrak{L} = \frac{1}{2} (m_1 \bm{r}_1^2 + m_2 \bm{r}_2^2) - U(\bm{r}).
+\end{gather*}
+To do this, we will do as we've been doing - we will consider the Lagrangian to be an optimization problem which we will find the Euler-Lagrange equation for, which will tell us the path that the bodies must obey by equivalency of Newton's Second Law and Hamilton's Principle of Least Action.
+
+\subsection{Generalizing Coordinate Space} To make working with the Lagrangian
+easier, we would like to adopt a generalized coordinate space. We have already
+reduced the three-dimensional notion of position to one-dimensional relative
+position, $\bm{r}$. The question we ask then, is how to represent the similarly
+three-dimensional momentum. 
+
+The first step is to take advantage of the fact that the rotation of our system typically takes place around the center of mass. This is given explicitly by
+\begin{align*}
+  % \label{eq:}
+  \bm{R} &= \frac{m_1 \bm{r}_1 + m_2 \bm{r}_2}{m_1 + m_2} 
+         = \frac{m_1 \bm{r}_1 + m_2 \bm{r}_2}{M},
+\end{align*}
+where $M = m_1 + m_2$, the total mass.
+% Additionally, we will take it as given that the total momentum of two bodies can be expressed as
+% \begin{align*}
+%   % \label{eq:}
+%   \bm{P} = M\dot{{R}}.
+% \end{align*}
+% We know that momentum is a conserved quantity, that is, it remains constant in a system. Therefore, $\dot{\bm{R}} $ must be constant as well. This will play a large role in 
+
+\noindent Now, $\bm{r}_1$ and $\bm{r}_2$ can be expressed entirely through their relative position and the system's center of mass.
+\begin{align*}
+  % \label{eq:}
+  \bm{r}_1 &= \bm{R} + \frac{m_2}{M} \bm{r} \\
+  \bm{r}_2 &= \bm{R} + \frac{m_1}{M} \bm{r}.
+\end{align*}
+\noindent We can now express kinetic energy as
+\begin{align*}
+  % \label{eq:}
+  T & = \frac{1}{2} (m_1 \dot{\bm{r}_1}^2 + m_2 \dot{\bm{r}_2}^2) \\
+    & = \frac{1}{2} \bigg(m_1 \bigg(\dot{\bm{R}}+\frac{m_2}{M} \dot{\bm{r}}\bigg)^2 + m_2 \bigg(\dot{\bm{R}} - \frac{m_1}{M} \dot{\bm{r}} \bigg)^2 \bigg)\\
+    & = \frac{1}{2} M \dot{\bm{R}}^2 + \frac{1}{2} \mu\dot{\bm{r}}^2,
+\end{align*}
+where $\mu = \frac{m_1 m_2}{M} \text{, the reduced mass} $.
+We have thus arrived at a configuration space with 4 degrees of freedom for two bodies.\\
+
+Now, the remarkability of the invariance of the Lagrangian, and by extension the Euler-Lagrange equations, presents itself. We may write the Lagrangian
+\begin{align}
+  \label{eq:TB Lagrangian}
+  \mathfrak{L} &= T - U \notag \\
+               &= \frac{1}{2} M \dot{\bm{R}}^2 + \frac{1}{2} \mu\dot{\bm{r}}^2 - U(r). 
+\end{align}
+The Lagrangian can then be split into two separate pieces, with one piece dependent exclusively on the center of mass $\bm{R}$ and the other dependent exclusively on $\bm{r}$. We can then solve for the motions of $\bm{R}$ and $\bm{r}$ separately, but it will turn out that even this isn't necessary!
+
+\subsection{Conserved Quantities and Further Reduction}
+Consider the case where the Lagrangian $\mathfrak{L}$ doesn't depend on an arbitrary coordinate ${q_k}$. Then,
+\begin{align*}
+  % \label{eq:}
+  \frac{d}{dt} \bigg(\frac{\partial \mathfrak{L}}{\partial \dot{q}_k}  \bigg) - \frac{\partial \mathfrak{L}}{\partial q_k} = 0 \Rightarrow \frac{\partial \mathfrak{L}}{\partial \dot{q}_k} = C,  
+\end{align*}
+where $C$ is a time-independent constant (although a time-dependent constant wouldn't be much of a constant at all).
+\begin{defn}
+  A coordinate that doesn't explicitly appear in the Lagrangian is called a \textbf{cyclic coordinate}. If a quantity of a mechanical system remains constant over time, it is a \textbf{conserved quantity}.
+\end{defn}
+
+\noindent So, ${\partial \mathfrak{L}}/{\partial \dot{q}_k}$ is a conserved quantity. In Cartesian coordinates, we would consider momentum $\bm{p} = {\partial \mathfrak{L}}/{\partial \dot{x}_k}$ a conserved quantity, which reassuringly correlates with physics. 
+
+\begin{defn}
+For the Lagrangian in generalized coordinates,
+  $\cfrac{\partial \mathfrak{L}}{\partial \dot{q}_k}$
+is the generalized momentum. If this quantity is constant over time, we call it a conserved momentum.
+\end{defn}
+
+Recall the Lagrangian of the Two-Body Problem. (\ref{eq:TB Lagrangian}) is independent of $\bm{R}$, so we know that $\dot{\bm{R}}$ must be a conserved quantity. Naturally then, $\bm{R}$ moves with constant velocity. The problem then reduces itself if we choose a clever frame of reference: because $\bm{R}$ is constant, choosing an inertial frame of reference where the center of mass is stationary and the total momentum is zero allows us to ignore the term dependent on $\bm{R}$ in the Lagrangian entirely!
+
+We are left to observe the behavior of the Lagrangian
+\begin{align}
+  \label{eq:One Param Lag}
+  \mathfrak{L} = \frac{1}{2} \mu \dot{\bm{r}}^2 - U(r).
+\end{align}
+Solving for the Euler-Lagrange equation, we get
+\begin{gather}
+  \label{eq:One Param EL}
+  \mu \ddot{\bm{r}} + \nabla U(\bm{r}) = 0 \notag \\
+  \mu \ddot{\bm{r}} = -\nabla U(\bm{r})
+\end{gather}
+\noindent So, all that's left to solve is this equation, governing a single particle with mass $\mu$, position $\bm{r}$, and potential $U$.
+
+There seems to be an impasse here. Our Lagrangian
+
 
 \newpage
-\section*{Appendix}
+\section{Appendix}
 \appendix
 \begin{defns}
   Consider a system of point masses. 
