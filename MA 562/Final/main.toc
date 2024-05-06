@@ -9,3 +9,4 @@
 \contentsline {subsection}{\tocsubsection {}{2.3}{Conserved Quantities and Further Reduction}}{9}{subsection.2.3}%
 \contentsline {subsection}{\tocsubsection {}{2.4}{Polar Coordinates, Equations of Motion, and Reduction to a One-Dimensional Problem}}{10}{subsection.2.4}%
 \contentsline {section}{\tocsection {}{3}{Appendix}}{12}{section.3}%
+\contentsline {section}{\tocsection {}{}{References}}{12}{section*.3}%

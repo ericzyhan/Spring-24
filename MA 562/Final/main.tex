@@ -328,7 +328,7 @@ The first term disappears because $q_k$ is dependent on position and time $x_k$ 
 \end{align*}
 The Euler-Lagrange equation demands that we take the time derivative of this function. We don't want a partial derivative, which holds the point in configuration space fixed, but rather the \textit{total} time derivative, which is the derivative along the path that the system takes as it moves through configuration spaces.
 
-\begin{defn}
+\begin{defn}\footnote{I may move this definition to the beginning of the section as \ref{eq:Formal Velocity} is a direct consequence of this.}
 For any function $f(x,t)$ in a configuration space\footnote{See (\ref{def: Configuration Space}) in the appendix}, the total time derivative is
 \begin{align}
   \label{eq:Time Derivative}
@@ -560,20 +560,40 @@ This is particularly helpful, as we may now rewrite ($\ref{eq: Radial Eq}$) in t
 \begin{defn}
   In it's most basic form, the effective potential energy of a system is defined as the sum of the actual potential energy $U(r)$ with the centrifugal potential energy $U_{CF}(r)$.
 \end{defn}
-\noindent So, 
+So, 
 \begin{align}
   \label{eq:Final Result}
   \mu \ddot{r} = -\frac{d}{dr} U_{\text{eff}}(r).
 \end{align}
+where $U_{\text{eff}}(r)$ is expressed as
+\begin{align}
+  \label{eq: Effective Potential}
+  U_{\text{eff}}(r) = U(r) + U_{CF}(r) = U(r) + \frac{l^2}{2\mu r^2}. 
+\end{align}
 
-Finally, we arrive at our desired result. By (\ref{eq:Final Result}), the radial motion of the particle is exactly the same as if the particle were moving in a single dimension with an effective potential. We have thus reduced the original, intimidating, 12-dimensional form of the Two-Body Problem to a single-dimensional problem which can be solved numerically or analytically with many sets of initial conditions. Through the methods of the calculus of variations, we were able to discern a profoundly physical interaction in classical mechanics.
+We are almost done.\footnote{Practically, yes. In actuality, this is the part of the paper that seems most handwavey to me. I have no physics background at all besides a single year of AP Physics so I have no clue what kind of value the conservation of energy brings to the problem. Some insight would be appreciated, if there's any you might have.} The details of the orbit will be explicitly given by looking more closely at (\ref{eq:Final Result}). Multiplying both sides of the equation by $\dot{r}$, we get\footnote{Some real abuse of Leibnitz notation going on here.}
+\begin{align*}
+  & \frac{d}{dt} \bigg(\frac{1}{2} \mu \dot{r}^2 \bigg) = -\frac{d}{dt} U_{\text{eff}}(r)\\
+  \Rightarrow \quad &  \frac{1}{2} \mu \dot{r}^2 + U_{\text{eff}}(r) = \text{const.}
+\end{align*}
+This result demonstrates the conservation of energy within our system. Expanding $U_{\text{eff}}(r) $ explicity as given in (\ref{eq: Effective Potential}),
+\begin{gather}
+    \label{eq:Energy Conservation}
+  \frac{1}{2} \mu \dot{r}^2 + U_{\text{eff}}(r) = \frac{1}{2}  \mu \dot{r}^2 + \frac{1}{2} \mu r^2 \dot{\theta} ^2 + U(r)
+  = E.
+\end{gather}
+
+Finally, we arrive at a complete picture of our desired result. By (\ref{eq:Final Result}), the radial motion of the particle is exactly the same as if the particle were moving in a single dimension with an effective potential. We have thus reduced the original, intimidating, 12-dimensional form of the Two-Body Problem to a single-dimensional problem which can be solved numerically or analytically with many sets of initial conditions. The radial motion of the particle is exactly identical to the movement of the particle moving in one-dimension with an effective potential energy. 
+
+Additionally, by (\ref{eq:Energy Conservation}), the total energy is representable as the sum of the one-dimensional kinetic energy of the radial motion and the effective potential energy, both of which have explicit forms.
+
+From here, one may go on to determine Kepler's Laws and make many other physical observations of the motions of celestial bodies. The most amazing part of this is that through the methods of the calculus of variations, we were able to discern a profoundly physical interaction in classical mechanics.
 
 
 
 
 \newpage
 \section{Appendix}
-\appendix
 \begin{defns}
     \label{def: Configuration Space}
   Consider a system of point masses. 
@@ -584,4 +604,26 @@ Finally, we arrive at our desired result. By (\ref{eq:Final Result}), the radial
     \item The dimension of the configuration space is called the number of \textbf{degrees of freedom} that a system has.
   \end{enumerate}
 \end{defns}
+
+\begin{thebibliography}{9}
+\bibitem{1} \label{b1}
+        Sussman, G. J. and Mayer, M. E. and Wisdom, J. Structure and Interpretation of Classical Mechanics. MIT Press, Cambridge, 2015. 
+\bibitem{2} \label{b2}
+        Arnold, V. I. Mathematical Methods of Classical Mechanics, Graduate Texts in Mathematics. Springer, Berlin, 1978.
+\bibitem{3} \label{b2}
+        Taylor, J. R. Classical Mechanics. University Science Books, 2005.
+\bibitem{4} \label{bh}
+        Shapiro, J. A. Classical Mechanics. Rutgers University, New Jersey, 2010.
+\bibitem{5} \label{b3}
+        Kao, C.Z. Classical Mechanics: The Three-Body Problem. University of Chicago, Chicago, 2011.
+\bibitem{6} \label{b4}
+        Morin, D. Introduction to Classical Mechanics: With Problems and Solutions. Cambridge University Press, Cambridge, 2008.
+\bibitem{7} \label{b5}
+        Chertkov, M. and Clark, C. Lecture Notes on the Principles and Methods of Applied Mathematics. University of Arizona, Tucson, 2020.
+\bibitem{8} \label{b5}
+        Singer, S.F. Symmetry in Mechanics: A Gentle, Modern Introduction. Birkhauser, 2004.
+\bibitem{9}
+        Spivak, M. Physics for Mathematicians, Mechanics I. Publish or Perish Press, 2010. Online Access.
+\end{thebibliography}
+
 \end{document}
