@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.10.23)  26 APR 2024 02:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2023.10.23)  3 JUN 2024 10:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -951,29 +951,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--73
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [1{C:/Users/erich/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 179
+ [1{C:/Users/erich/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
+LaTeX Font Info:    Trying to load font information for U+euf on input line 184
 .
-
-(C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
+ (C:\Users\erich\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
-[4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 291--292
+[3] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 321--323
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 379--381
+Underfull \hbox (badness 10000) in paragraph at lines 392--393
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--402
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 444--447
+Underfull \hbox (badness 10000) in paragraph at lines 464--467
 
  []
 
-[8] [9] [10] [11] [12] (main.aux)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 617--618
+
+ []
+
+[11]
+<fig1.png, id=237, 398.23781pt x 208.52907pt>
+File: fig1.png Graphic file (type png)
+<use fig1.png>
+Package pdftex.def Info: fig1.png  used on input line 645.
+(pdftex.def)             Requested size: 199.11841pt x 104.26427pt.
+ [12 <./fig1.png>] [13] (main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-10-10>
@@ -986,38 +1005,36 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 67E3D876FA035B04C3C68C96C9D908E8;2965.
  ) 
 Here is how much of TeX's memory you used:
- 32899 strings out of 474824
- 772577 string characters out of 5750976
- 1945043 words of memory out of 5000000
- 54078 multiletter control sequences out of 15000+600000
+ 32942 strings out of 474824
+ 773374 string characters out of 5750976
+ 1947043 words of memory out of 5000000
+ 54114 multiletter control sequences out of 15000+600000
  569954 words of font info for 82 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 99i,12n,101p,1379b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,101p,1009b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmbx8.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmcsc10.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/font
 s/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/erich/AppData/Local/Programs/Mi
 KTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/erich/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/erich/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/erich/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Us
-ers/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pf
-b><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr5.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmr6.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmr7.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmr8.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/erich/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/erich/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/erich/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/e
-rich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.p
-fb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/sy
-mbols/msbm10.pfb>
-Output written on main.pdf (12 pages, 313528 bytes).
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/erich/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/eric
+h/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb
+><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mr7.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmsy7.pfb><C:/Users/erich/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/erich/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/erich/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/er
+ich/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pf
+b>
+Output written on main.pdf (13 pages, 321202 bytes).
 PDF statistics:
- 327 PDF objects out of 1000 (max. 8388607)
- 90 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 97 named destinations out of 1000 (max. 500000)
+ 114 words of extra memory for PDF output out of 10000 (max. 10000000)
 
